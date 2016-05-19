@@ -1,0 +1,32 @@
+<table class="table table-hover">
+    <tr>
+        <td align="left">Search Customer By Phone No. :</td>
+        <td align="left"><input ng-model="selectedphone" placeholder="enter phone number"/></td>
+    </tr>
+    <tr>
+        <th>Invoice Id</th>
+        <th>Invoice No.</th>
+        <th>Invoice Date</th>
+        <th>Customer Phone</th>
+        <th>Action</th>
+        <th>Action</th>
+    </tr>
+    <tr ng-repeat="i in allinvoices |filter:phoneFilter">
+        <td>{{i.invoiceId}}</td>
+        <td>{{i.invoiceNo}}</td>
+        <td>{{i.invoiceDate}}</td>
+        <td>{{i.customerEntity.phone}}</td>
+
+        <td>
+            <button type="button" class="btn btn-primary" ng-click="editclicked(i)">
+                VIEW
+            </button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-danger" ng-click="deleteinvoice(i)">
+                DELETE
+            </button>
+        </td>
+    </tr>
+
+</table>

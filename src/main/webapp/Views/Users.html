@@ -1,0 +1,105 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+        <h1><strong>User Registration Form</strong></h1>
+
+        <form class="form-horizontal">
+
+            <div class="form-group">
+                <label for="input8" class="col-sm-3 control-label"> Name</label>
+
+                <div class="col-sm-4 ">
+                    <input type="text" name="Name" class="form-control" id="input8" placeholder="Name"
+                           ng-model="users.name">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="input1" class="col-sm-3 control-label">UserName</label>
+
+                <div class="col-sm-4 ">
+                    <input type="text" name="UserName" class="form-control" id="input1" placeholder="UserName"
+                           ng-model="users.username" >
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="input6" class="col-sm-3 control-label">Password</label>
+
+                <div class="col-sm-4 ">
+                    <input type="password" name="Password" class="form-control" id="input6" placeholder="Password"
+                           ng-model="users.password">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="input2" class="col-sm-3 control-label">Father's Name</label>
+
+                <div class="col-sm-4">
+                    <input type="text" name="Father's Name" class="form-control" id="input2" placeholder="Father's Name"
+                           ng-model="users.fatherName">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="input3" class="col-sm-3 control-label">Address</label>
+
+                <div class="col-sm-4">
+                    <input type="text" name="Address" class="form-control" id="input3" placeholder="Address"
+                           ng-model="users.address">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="input4" class="col-sm-3 control-label">Email</label>
+
+                <div class="col-sm-4">
+                    <input type="Email" name="Email" class="form-control" id="input4" placeholder="Email"
+                           ng-model="users.email">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="input5" class="col-sm-3 control-label">Phone No.</label>
+
+                <div class="col-sm-4">
+                    <input type="Integer" name="Phone No." class="form-control" id="input5" placeholder="Phone No."
+                           ng-model="users.phone">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="input11" class="col-sm-3 control-label">Employee Role</label>
+
+                <div class="col-sm-4">
+                    <input type="text" name="Employee role" class="form-control" id="input11"
+                           placeholder="Enter Employee role" ng-model="users.userRoleEntity.role">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="input7" class="col-sm-3 control-label">Enabled</label>
+
+                <div class="col-sm-4 ">
+                    <input type="Integer" name="Enabled" class="form-control" id="input7"
+                           placeholder="1 for enabled ,0 for disabled" ng-model="users.enabled">
+                </div>
+            </div>
+            <div>
+                <label class="col-sm-3 control-label">Gender</label>
+
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="Male" checked
+                               ng-model="users.gender">
+                        Male
+                    </label>
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="Female"
+                               ng-model="users.gender">
+                        Female
+                    </label>
+                </div>
+
+
+            </div>
+            <center>
+                <button class="btn btn-default" ng-click="submit()">Submit</button>
+            </center>
+        </form>
+    </div>
+</div>
+</div>

@@ -1,0 +1,158 @@
+<table class="table table-hover">
+    <tr>
+        <th>Id</th>
+        <th>User Name</th>
+        <th>Password</th>
+        <th> Name</th>
+        <th>Father's Name</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Role</th>
+        <th>Enabled</th>
+        <th>Gender</th>
+        <th>Actions</th>
+    </tr>
+    <tr ng-repeat="e in userList">
+        <td>{{e.userid}}</td>
+        <td>{{e.username}}</td>
+        <td>{{e.password}}</td>
+        <td>{{e.name}}</td>
+        <td>{{e.fatherName}}</td>
+        <td>{{e.address}}</td>
+        <td>{{e.email}}</td>
+        <td>{{e.phone}}</td>
+        <td>{{e.userRoleEntity.role}}</td>
+        <td>{{e.enabled}}</td>
+        <td>{{e.gender}}</td>
+        <td>
+            <button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click="editclicked(e)">
+                Edit
+            </button>
+        </td>
+        <td>
+            <button type="button"  class="btn btn-danger"  ng-click="delete(e)">
+                Delete
+            </button>
+        </td>
+    </tr>
+</table>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Edit User Details</h4>
+            </div>
+            <div class="modal-body">
+
+                <form class="form-horizontal">
+
+                    <div class="form-group">
+                        <label for="input8" class="col-sm-3 control-label"> Name</label>
+
+                        <div class="col-sm-4 ">
+                            <input type="text" name="Name" class="form-control" id="input8" placeholder="Name"
+                                   ng-model="users.name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="input1" class="col-sm-3 control-label">UserName</label>
+
+                        <div class="col-sm-4 ">
+                            <input type="text" name="UserName" class="form-control" id="input1" placeholder="UserName"
+                                   ng-model="users.username" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="input6" class="col-sm-3 control-label">Password</label>
+
+                        <div class="col-sm-4 ">
+                            <input type="password" name="Password" class="form-control" id="input6"
+                                   placeholder="Password" ng-model="users.password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="input2" class="col-sm-3 control-label">Father's Name</label>
+
+                        <div class="col-sm-4">
+                            <input type="text" name="Father's Name" class="form-control" id="input2"
+                                   placeholder="Father's Name" ng-model="users.fatherName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="input3" class="col-sm-3 control-label">Address</label>
+
+                        <div class="col-sm-4">
+                            <input type="text" name="Address" class="form-control" id="input3" placeholder="Address"
+                                   ng-model="users.address">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="input4" class="col-sm-3 control-label">Email</label>
+
+                        <div class="col-sm-4">
+                            <input type="Email" name="Email" class="form-control" id="input4" placeholder="Email"
+                                   ng-model="users.email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="input5" class="col-sm-3 control-label">Phone No.</label>
+
+                        <div class="col-sm-4">
+                            <input type="Integer" name="Phone No." class="form-control" id="input5"
+                                   placeholder="Phone No." ng-model="users.phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="input11" class="col-sm-3 control-label">Employee Role</label>
+
+                        <div class="col-sm-4">
+                            <input type="text" name="Employee role" class="form-control" id="input11"
+                                   placeholder="Enter Employee role" ng-model="users.role">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="input7" class="col-sm-3 control-label">Enabled</label>
+
+                        <div class="col-sm-4 ">
+                            <input type="Integer" name="Enabled" class="form-control" id="input7"
+                                   placeholder="1 for enabled ,0 for disabled" ng-model="users.enabled">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="col-sm-3 control-label">Gender</label>
+
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="Male" checked
+                                       ng-model="users.gender">
+                                Male
+                            </label>
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="Female"
+                                       ng-model="users.gender">
+                                Female
+                            </label>
+                        </div>
+
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" ng-click="save()" data-dismiss="modal">Save changes</button>
+        </div>
+    </div>
+</div>
+
+
+

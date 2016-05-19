@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - Invoice@localhost" uuid="6eba7c04-65af-456b-b5be-541f9f5708b2">
+    <database-info product="MySQL" version="5.5.44-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="Invoice"/>
+    <table name="customer" schema="" catalog="Invoice" type="TABLE">
+      <column name="phone" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="address" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="phone"/>
+      <exported-key name="fk_phone" table="invoice" schema="" catalog="Invoice" columns="phone"/>
+    </table>
+    <table name="invoice" schema="" catalog="Invoice" type="TABLE">
+      <column name="invoice_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="invoice_no" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="invoice_date" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="phone" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="invoice_id"/>
+      <foreign-key name="fk_phone" columns="phone" ref-table="customer" ref-schema="" ref-catalog="Invoice" ref-columns="phone" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_invoice_id" table="items" schema="" catalog="Invoice" columns="invoice_id"/>
+      <index name="fk_phonex" unique="false" columns="phone"/>
+    </table>
+    <table name="items" schema="" catalog="Invoice" type="TABLE">
+      <column name="item_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="item_detail" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="item_quantity" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="unit_price" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="invoice_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="item_id"/>
+      <foreign-key name="fk_invoice_id" columns="invoice_id" ref-table="invoice" ref-schema="" ref-catalog="Invoice" ref-columns="invoice_id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="fk_invoice_idx" unique="false" columns="invoice_id"/>
+    </table>
+    <table name="user" schema="" catalog="Invoice" type="TABLE">
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="username" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="father_name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="address" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="phone" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12"/>
+      <column name="gender" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="enabled" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="user_id"/>
+      <exported-key name="fk_user_id" table="user_roles" schema="" catalog="Invoice" columns="user_id"/>
+      <index name="unique_username" unique="true" columns="username"/>
+    </table>
+    <table name="user_roles" schema="" catalog="Invoice" type="TABLE">
+      <column name="user_role_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="role" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="user_role_id"/>
+      <foreign-key name="fk_user_id" columns="user_id" ref-table="user" ref-schema="" ref-catalog="Invoice" ref-columns="user_id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="fk_user__idx" unique="false" columns="user_id"/>
+    </table>
+  </data-source>
+</component>

@@ -1,0 +1,104 @@
+<div class="container" width="800px" id="invoice">
+    <div class="row">
+        <div class="col-xs-12 heading">
+            INVOICE
+        </div>
+    </div>
+    <div class="row branding">
+        <div class="col-xs-6">
+            <div class="invoice-number-container">
+                <label for="invoice-number">Invoice #</label>
+                <input type="text" disabled="disabled" id="invoice-number" ng-model="invoice.invoiceNo"/>
+            </div>
+            <div class="invoice-number-container">
+                <label for="invoice-date">Invoice Date</label>
+                <input type="text" id="invoice-date" ng-model="invoice.invoiceDate">
+            </div>
+        </div>
+        <div class="col-xs-6 logo-container">
+          <img src="fareye.png" height="100px" width="100px">
+        </div>
+    </div>
+    <div class="row infos">
+        <div class="col-xs-6">
+            <div><h3>Customer Details</h3></div>
+
+                       <div class="input-container"><label>Phone:</label>
+                <input type="text" ng-model="invoice.customerPhone" ng-change="doSearch()"
+                       ng-model-options="{ debounce: 1000 }"/></div>
+
+            <div class="input-container"><label>Name:</label><input type="text" ng-model="invoice.customerName"/></div>
+            <div class="input-container"><label>Address:</label><input type="text" ng-model="invoice.customerAddress"/>
+            </div>
+            <div class="input-container"><label>Email:</label><input type="email" ng-model="invoice.customerEmail"/>
+            </div>
+
+            <div class="input-container" data-ng-hide='printMode'>
+                <select ng-model='currencySymbol'
+                        ng-options='currency.symbol as currency.name for currency in availableCurrencies'></select>
+            </div>
+        </div>
+        <div class="col-xs-6 right">
+            <div><h3>Company</h3></div>
+            <div><label>FarEye</label></div>
+            <div><label>Okhla Phase 3</label></div>
+            <div><label>NewDelhi-110076</label></div>
+        </div>
+    </div>
+    <div class="items-table">
+        <div class="row header">
+            <div class="col-xs-1">&nbsp;</div>
+            <div class="col-xs-5">Item Detail</div>
+            <div class="col-xs-2">Quantity</div>
+            <div class="col-xs-2">Unit Price {{currencySymbol}}</div>
+            <div class="col-xs-2 text-right">Total</div>
+        </div>
+        <div class="row invoice-item" ng-repeat="item in invoice.items" ng-animate="'slide-down'">
+            <div class="col-xs-1 remove-item-container">
+                <a href ng-hide="printMode" ng-click="removeItem(item)" class="btn btn-danger">[X]</a>
+            </div>
+            <div class="col-xs-5 input-container">
+                <input ng-model="item.itemDetail" placeholder="Description"/>
+            </div>
+            <div class="col-xs-2 input-container">
+                <input ng-model="item.quantity" value="1" size="4" ng-required ng-validate="integer"
+                       placeholder="Quantity"/>
+            </div>
+            <div class="col-xs-2 input-container">
+                <input ng-model="item.unitPrice" value="0.00" ng-required ng-validate="number" size="6"
+                       placeholder="Cost"/>
+            </div>
+            <div class="col-xs-2 text-right input-container">
+                {{item.unitPrice * item.quantity | currency: currencySymbol}}
+            </div>
+        </div>
+        <div class="row invoice-item">
+            <div class="col-xs-12 add-item-container" ng-hide="printMode">
+                <a class="btn btn-primary" href ng-click="addItem()">[+]</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-10 text-right">Sub Total</div>
+            <div class="col-xs-2 text-right">{{invoiceSubTotal() | currency: currencySymbol}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-10 text-right">Tax(%): <input ng-model="invoice.tax" ng-validate="number"
+                                                             style="width:43px"></div>
+            <div class="col-xs-2 text-right">{{calculateTax() | currency: currencySymbol}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-10 text-right">Grand Total:</div>
+            <div class="col-xs-2 text-right">{{calculateGrandTotal() | currency: currencySymbol}}</div>
+        </div>
+    </div>
+    <div class="row noPrint actions">
+        <button class="btn btn-primary" ng-click="submit()">Save</button>
+        <a href="javascript:window.print()" ng-show="printMode" class=" btn btn-primary ">Print </a>
+        <button class="btn btn-primary" ng-click="clear()">Reset</button>
+        <button class="btn btn-primary" ng-hide="printMode" ng-click="printMode = true;">Turn On Print Mode</button>
+        <button class="btn btn-primary" ng-show="printMode" ng-click="printMode = false;">Turn Off Print Mode</button>
+        <!--<a href="javascript:window.print()" class=" btn btn-primary ">Print </a>-->
+        <!--<button ng-click="printToCart('invoice')" class="button">Print</button>-->
+    </div>
+</div>
+
