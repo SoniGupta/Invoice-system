@@ -2,7 +2,7 @@ invoiceApp.controller('UserController', function ($scope, $http, $location) {
       $scope.users = {
         username: '',
         password: '',
-        name: '',
+        name: 'soni',
         fatherName: '',
         address: '',
         email: '',
