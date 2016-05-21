@@ -7,5 +7,11 @@
       <schema-pattern>Invoice.*</schema-pattern>
       <default-schemas>Invoice.*</default-schemas>
     </data-source>
+    <data-source name="PostgreSQL - invoicesystem@localhost" uuid="ccfb9eb7-81a5-4ab5-8b4b-5f673879862b">
+      <secret-storage>master_key</secret-storage>
+      <user-name>postgres</user-name>
+      <schema-pattern>invoicesystem.pg_catalog invoicesystem.public</schema-pattern>
+      <default-schemas>invoicesystem.pg_catalog invoicesystem.public</default-schemas>
+    </data-source>
   </component>
 </project>
