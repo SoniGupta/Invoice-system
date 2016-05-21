@@ -16,7 +16,7 @@ invoiceApp.controller('UserController', function ($scope, $http, $location) {
     $scope.submit = function () {
 
         $http({
-            url: "http://localhost:8080/addusernew",
+            url: "/addusernew",
             method: "POST",
             data: $scope.users,
             headers : {'Content-Type': 'application/json' }

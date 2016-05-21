@@ -1,6 +1,6 @@
 invoiceApp.controller('InvoiceListController', function ($scope, $http, $location) {
 
-    var url = 'http://localhost:8080/invoices';
+    var url = '/invoices';
     $http.get(url).success(function (response) {
         $scope.allinvoices = response;
     });
@@ -31,7 +31,7 @@ invoiceApp.controller('InvoiceListController', function ($scope, $http, $locatio
 
 $scope.deleteinvoice = function (i) {
     $http({
-        url: "http://localhost:8080/deleteinvoice",
+        url: "/deleteinvoice",
         method: 'GET',
         params: {invoiceId: i.invoiceId}
     }).then(function (success) {

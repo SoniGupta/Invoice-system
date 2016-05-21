@@ -3,7 +3,7 @@ invoiceApp.controller('HeaderController', function ($scope, $location, $http) {
         return viewLocation === $location.path();
     };
 
-    var url = "http://localhost:8080/user";
+    var url = "/user";
     $http.get(url).success(function (response) {
         $scope.user = response;
 

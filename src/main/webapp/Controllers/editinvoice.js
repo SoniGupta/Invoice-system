@@ -19,7 +19,7 @@ invoiceApp.controller('InvoiceEditController', function ($scope, $http, $locatio
 
 
     $http({
-        url: "http://localhost:8080/invoicedetails",
+        url: "/invoicedetails",
         method: "GET",
         params: {invoice_id: $scope.invId}
     }).then(

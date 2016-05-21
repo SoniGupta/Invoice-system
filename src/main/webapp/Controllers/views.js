@@ -1,5 +1,5 @@
 invoiceApp.controller('ViewController', function ($scope, $http) {
-    var url = 'http://localhost:8080/allusers';
+    var url = '/allusers';
     $http.get(url).success(function (response) {
         $scope.userList = response;
     });
@@ -35,7 +35,7 @@ invoiceApp.controller('ViewController', function ($scope, $http) {
     $scope.save = function () {
 
         $http({
-            url: "http://localhost:8080/adduser",
+            url: "/adduser",
             method: "GET",
             params: $scope.users
         }).then(
@@ -52,14 +52,14 @@ invoiceApp.controller('ViewController', function ($scope, $http) {
     };
 
 //to get updated data in view
-    var url = 'http://localhost:8080/allusers';
+    var url = '/allusers';
     $http.get(url).success(function (response) {
         $scope.userList = response;
     });
 
     $scope.delete = function (e) {
         $http({
-            url: "http://localhost:8080/delete",
+            url: "/delete",
             method: 'GET',
             params: {userid: e.userid}
         }).then(function (success) {
@@ -67,7 +67,7 @@ invoiceApp.controller('ViewController', function ($scope, $http) {
                 alert('successfully deleted');
             },
             function (error) {
-                var url = 'http://localhost:8080/allusers';
+                var url = '/allusers';
                 $http.get(url).success(function (response) {
                     $scope.userList = response;
                 });
