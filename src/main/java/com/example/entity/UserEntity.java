@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "user")
+@Table(name = "userentity")
 public class UserEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

@@ -1,48 +1,5 @@
 invoiceApp.controller('UserController', function ($scope, $http, $location) {
-    //$scope.users = {
-    //    username: '',
-    //    password: '',
-    //    name: '',
-    //    fatherName: '',
-    //    address: '',
-    //    email: '',
-    //    phone: '',
-    //    gender: '',
-    //    enabled: ''
-    //};
-    //
-    //$scope.submit = function () {
-    //
-    //    $http({
-    //        url: "http://localhost:8080/adduser",
-    //        method: "GET",
-    //        params: $scope.users
-    //    }).then(
-    //        function (success) {
-    //            alert('successfully saved');
-    //        },
-    //        function (error) {
-    //            alert('not success');
-    //        });
-    //    $scope.users = {
-    //        username: '',
-    //        password: '',
-    //        name: '',
-    //        fatherName: '',
-    //        address: '',
-    //        email: '',
-    //        phone: '',
-    //        gender: '',
-    //        enabled: ''
-    //    };
-    //}
-
-
-
-
-
-
-    $scope.users = {
+      $scope.users = {
         username: '',
         password: '',
         name: '',

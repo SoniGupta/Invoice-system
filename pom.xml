@@ -87,7 +87,11 @@
 				<scope>compile</scope>
 			</dependency>
 
-
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.3-1104-jdbc41</version>
+		</dependency>
 
 	</dependencies>
 
